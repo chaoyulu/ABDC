@@ -1,16 +1,16 @@
 package com.cyl.abdc
 
-import android.view.Gravity
+import android.content.Intent
+import com.cyl.abdc.animationtest.AnimationActivity
 import com.cyl.abdc.databinding.ActivityMainBinding
 import com.cyl.utils.log.LogUtils
 import com.cyl.utils.toast.ToastUtils
 import com.cyl.vb.BaseViewBindingActivity
-import com.hjq.toast.Toaster
 
 class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     var index = 0
     override fun initialize() {
-        Toaster.init(this.application)
+//        Toaster.init(this.application)
         binding.btnCoil.setOnClickListener {
             LogUtils.logE(msg = "Coil图片加载框架")
             ToastUtils.toast(R.string.app_name)
@@ -26,5 +26,12 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
             ToastUtils.centerToast(R.string.app_name)
             ++index
         }
+
+        binding.btnAnimation.setOnClickListener {
+            startActivity(Intent(this, AnimationActivity::class.java))
+        }
+
+        val map = linkedMapOf<String, String>()
+        map.set("","")
     }
 }
